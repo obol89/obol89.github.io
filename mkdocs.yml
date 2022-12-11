@@ -6,6 +6,7 @@ nav:
     - Gather ansible facts: gather_ansible_facts.md
     - Create preseed with LVM and partman: partman_lvm_preseed.md
     - Use two network gateways with CentOS: two_gateways_centos.md
+    - Delete branch in git: delete_git_branch.md
 theme:
   name: material
   features:
