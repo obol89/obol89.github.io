@@ -7,7 +7,7 @@ tags:
     - Partman
     - Debian
 ---
-# How to create partman LVM partitions on Debian with preseed 
+# How to create partman LVM partitions on Debian with preseed
 
 Example, how to write a template for Debian to create LVM partitions with partman. It is a bit tricky, as first we have to create boot partition, then virtual group, and further we are able to create partitions by assigning them to volume group.
 
