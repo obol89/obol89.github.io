@@ -5,7 +5,7 @@ tags:
     - Git
     - Linux
 ---
-# How to delete git branch
+# Delete git branch
 
 The basic command syntax for deleting branch is:  
 `git branch (-d | -D) [-r] <branchname>...`

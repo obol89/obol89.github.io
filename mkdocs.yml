@@ -3,10 +3,11 @@ nav:
   - Home: index.md
   - Tags: tags.md
   - 'Notes':
-    - Gather ansible facts: gather_ansible_facts.md
-    - Create preseed with LVM and partman: partman_lvm_preseed.md
-    - Use two network gateways with CentOS: two_gateways_centos.md
-    - Delete branch in git: delete_git_branch.md
+    - Create APT repository on CentOS: posts/apt_repo_centos.md
+    - Create preseed with LVM and partman: posts/partman_lvm_preseed.md
+    - Delete branch in git: posts/delete_git_branch.md
+    - Gather or update ansible facts: posts/gather_ansible_facts.md
+    - Use two network gateways with CentOS: posts/two_gateways_centos.md
 theme:
   name: material
   features:
