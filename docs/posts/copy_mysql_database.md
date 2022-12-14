@@ -24,13 +24,13 @@ mysql -u root -p
 
 Dump database objects and data into SQL file using the mysqldump tool.  
 
-## a) If you want to move the whole database:
+## a) If you want to move the whole database
 
 ``` bash
 mysqldump -u root -p db_test > /tmp/db_test.sql
 ```
 
-## b) If you want to move only certain tables:
+## b) If you want to move only certain tables
 
 ``` bash
 mysqldump -u root -p db_test tablename1 tablename2 > /tmp/db_test_tables.sql
