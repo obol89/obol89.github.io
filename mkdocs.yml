@@ -5,8 +5,12 @@ nav:
   - 'Notes':
     - Create APT repository on CentOS: posts/apt_repo_centos.md
     - Create preseed with LVM and partman: posts/partman_lvm_preseed.md
+    - Configure static IP address on CentOS 8: posts/static_ip_centos8.md
+    - Copy MySQL database: posts/copy_mysql_database.md
     - Delete branch in git: posts/delete_git_branch.md
+    - Extend LVM in Linux: posts/extend_lvm_linux.md
     - Gather or update ansible facts: posts/gather_ansible_facts.md
+    - Host is not allowed to connect to this MySQL server: posts/host_not_allowed_connect_mysql.md
     - Move /var to new partition in CentOS: posts/var_to_new_partition.md
     - Repair corrupted USB drive in Linux: posts/repair_corrupted_usb_drive.md
     - Repair corrupted USB drive in Windows: posts/repair_corrupted_usb_drive_win.md
