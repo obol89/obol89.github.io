@@ -3,6 +3,10 @@ nav:
   - Home: index.md
   - Tags: tags.md
   - 'Notes':
+    - Authentication plugin caching_sha2_password cannot be loaded: posts/mysql8_caching_sha2_pass.md
+    - Change MySQL Password Policy Level: posts/mysql_password_policy.md
+    - Check size of the MySQL table: posts/mysql_table_size.md
+    - Copy files with SCP: posts/scp_transfer.md
     - Create APT repository on CentOS: posts/apt_repo_centos.md
     - Create preseed with LVM and partman: posts/partman_lvm_preseed.md
     - Configure static IP address on CentOS 8: posts/static_ip_centos8.md
@@ -11,9 +15,12 @@ nav:
     - Extend LVM in Linux: posts/extend_lvm_linux.md
     - Gather or update ansible facts: posts/gather_ansible_facts.md
     - Host is not allowed to connect to this MySQL server: posts/host_not_allowed_connect_mysql.md
+    - Install Percona MySQL Server 8 on CentOS 8: posts/install_percona_mysql8.md
+    - List and add Iptables rules: posts/iptables_basics.md
     - Move /var to new partition in CentOS: posts/var_to_new_partition.md
     - Repair corrupted USB drive in Linux: posts/repair_corrupted_usb_drive.md
     - Repair corrupted USB drive in Windows: posts/repair_corrupted_usb_drive_win.md
+    - Restart port on Cisco device: posts/cisco_port_restart.md
     - Use two network gateways with CentOS: posts/two_gateways_centos.md
 theme:
   name: material
