@@ -21,6 +21,7 @@ nav:
     - Repair corrupted USB drive in Linux: posts/repair_corrupted_usb_drive.md
     - Repair corrupted USB drive in Windows: posts/repair_corrupted_usb_drive_win.md
     - Restart port on Cisco device: posts/cisco_port_restart.md
+    - Update firmware on Linux: posts/linux_firmware_update.md
     - Use two network gateways with CentOS: posts/two_gateways_centos.md
 theme:
   name: material
