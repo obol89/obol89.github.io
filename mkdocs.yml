@@ -4,6 +4,7 @@ nav:
   - Tags: tags.md
   - 'Notes':
     - Authentication plugin caching_sha2_password cannot be loaded: posts/mysql8_caching_sha2_pass.md
+    - Bringing custom logs to Elasticsearch: posts/custom_logs_elastic.md
     - Change MySQL Password Policy Level: posts/mysql_password_policy.md
     - Check size of the MySQL table: posts/mysql_table_size.md
     - Copy files with SCP: posts/scp_transfer.md

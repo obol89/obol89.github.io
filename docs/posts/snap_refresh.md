@@ -5,6 +5,8 @@ tags:
     - Snap
     - Repository
     - Linux
+    - Ubuntu
+    - Debian
 ---
 # Update Snap package and snap-store
 
