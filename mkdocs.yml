@@ -27,6 +27,7 @@ nav:
     - Use two network gateways with CentOS: posts/two_gateways_centos.md
 theme:
   name: material
+  custom_dir: overrides
   features:
     - navigation.sections
     - navigation.top
