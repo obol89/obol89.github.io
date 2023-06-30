@@ -18,6 +18,7 @@ nav:
     - Install Percona MySQL Server 8 on CentOS 8: posts/install_percona_mysql8.md
     - List and add Iptables rules: posts/iptables_basics.md
     - Move /var to new partition in CentOS: posts/var_to_new_partition.md
+    - Refresh snap packages / update snap: posts/snap_refresh.md
     - Repair corrupted USB drive in Linux: posts/repair_corrupted_usb_drive.md
     - Repair corrupted USB drive in Windows: posts/repair_corrupted_usb_drive_win.md
     - Restart port on Cisco device: posts/cisco_port_restart.md
