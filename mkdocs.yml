@@ -26,6 +26,7 @@ nav:
     - Repair corrupted USB drive in Windows: posts/repair_corrupted_usb_drive_win.md
     - Restart port on Cisco device: posts/cisco_port_restart.md
     - Required SSH files permissions: posts/ssh_permissions.md
+    - Screen commands: posts/screen_use.md
     - Speed test between two hosts: posts/speed_test_between_hosts.md
     - Update firmware on Linux: posts/linux_firmware_update.md
     - Use two network gateways with CentOS: posts/two_gateways_centos.md
