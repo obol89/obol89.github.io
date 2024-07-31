@@ -9,6 +9,7 @@ nav:
     - Check size of the MySQL table: posts/mysql_table_size.md
     - Copy files with SCP: posts/scp_transfer.md
     - Create APT repository on CentOS: posts/apt_repo_centos.md
+    - Create empty file to take disk space on Linux: posts/dummy_file.md
     - Create preseed with LVM and partman: posts/partman_lvm_preseed.md
     - Configure static IP address on CentOS 8: posts/static_ip_centos8.md
     - Copy MySQL database: posts/copy_mysql_database.md
