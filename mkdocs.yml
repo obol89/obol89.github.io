@@ -14,6 +14,7 @@ nav:
     - Configure static IP address on CentOS 8: posts/static_ip_centos8.md
     - Copy MySQL database: posts/copy_mysql_database.md
     - Delete branch in git: posts/delete_git_branch.md
+    - Delete files older than X days: posts/find_delete_files.md
     - Extend LVM in Linux: posts/extend_lvm_linux.md
     - Extend partition without LVM in Linux: posts/extending_disk_space_without_lvm.md
     - Gather or update ansible facts: posts/gather_ansible_facts.md
