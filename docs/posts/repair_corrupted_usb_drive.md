@@ -9,15 +9,15 @@ tags:
 ---
 # How to repair corrupted USB drive in Linux
 
-If you have a USB drive you can’t read or write or it’s shrunk you should follow steps below.
+If your USB drive is unreadable, unwritable, or showing a reduced size, follow the steps below.
 
-Locate the name of your USB drive with `lsblk` command.
+Locate the USB drive name with `lsblk`.
 
 ## Remove old partitions
 
-Go to `fdisk` using the following command and delete all partitions.
+Open `fdisk` and delete all existing partitions:
 
-``` bash
+```bash
 fdisk /dev/sdc
 ```
 
@@ -32,22 +32,20 @@ Type `1` to make this the first partition.
 `enter` to accept default first sector and last sector.  
 Type `w` to write the new partition information
 
-Next, you need to unmount drive with:
+Unmount the drive:
 
-``` bash
+```bash
 umount /dev/sdc1
 ```
 
-New filesystem:
+## New filesystem
 
-Create filesystem with the following commands:
-
-``` bash
+```bash
 mkfs.ext4 -f /dev/sdc1
 ```
 
 or
 
-``` bash
+```bash
 mkfs.ntfs -f /dev/sdc1
 ```

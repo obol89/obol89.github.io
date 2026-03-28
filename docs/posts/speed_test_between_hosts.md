@@ -8,11 +8,11 @@ tags:
 ---
 # How to test link speed between two hosts
 
-In this manual we are going to use `iperf`
+Uses `iperf`.
 
 ## Installation
 
-On both hosts run:
+On both hosts:
 
 ```bash
 sudo apt-get install iperf
@@ -30,10 +30,9 @@ iperf -s
 iperf -c IPERF_SERVER_ADDRESS
 ```
 
-After this command you will see something like:
+Example output:
 
-```bash
-user@IPERF_CLIENT:~$ iperf -c IPERF_SERVER_ADDRESS
+```text
 ------------------------------------------------------------
 Client connecting to IPERF_SERVER_ADDRESS, TCP port 5001
 TCP window size: 16.0 KByte (default)
@@ -43,4 +42,4 @@ TCP window size: 16.0 KByte (default)
 [  3]  0.0-10.0 sec  1.04 GBytes    893 Mbits/sec
 ```
 
-As you can see it is running on the 5001 port by default. If you want to change the port, use `-p` parameter.
+The default port is 5001. Use `-p` to change it.

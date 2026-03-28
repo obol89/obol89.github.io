@@ -9,47 +9,42 @@ tags:
 
 # How to bring the port up from the flapping state on Cisco?
 
-If you have issues with port on your Cisco switch you need to use these commands:
-With this command you will be able to locate flapping port:
+Locate the flapping port:
 
-``` bash
+```bash
 sh int status
 ```
 
-Go to the configuration state:
+Enter configuration mode and select the port (using `eth1/6` as an example):
 
-``` bash
+```bash
 conf t
 ```
 
-Let's use `eth1/6` as an example.
-
-``` bash
+```bash
 int eth1/6
 ```
 
-Switch off and switch on the port:
+Bounce the port:
 
-``` bash
+```bash
 shut
 ```
 
-``` bash
+```bash
 no shut
 ```
 
-We need to `exit` twice:
+Exit configuration mode and save:
 
-``` bash
+```bash
 exit
 ```
 
-``` bash
+```bash
 exit
 ```
 
-And save our config:
-
-``` bash
+```bash
 wr
 ```

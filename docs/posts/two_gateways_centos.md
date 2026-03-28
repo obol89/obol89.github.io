@@ -19,14 +19,11 @@ Two networks that should be used are:
 `192.168.1.0/24`  
 `10.10.0.0/24`
 
-whereby the first IP address in each respective network should be the gateway. Config files for these interfaces are in:  
-`/etc/sysconfing/network-scripts/ifcfg-eth0`  
-and  
-`ifcfg-eth1`  
-and it looks like this:  
-`cat /etc/sysconfig/network-scripts/ifcfg-eth0`
+whereby the first IP address in each respective network should be the gateway. Config files for these interfaces are in `/etc/sysconfig/network-scripts/`.
 
-``` bash
+`/etc/sysconfig/network-scripts/ifcfg-eth0`:
+
+```text
 TYPE=Ethernet
 PROXY_METHOD=none
 BROWSER_ONLY=no
@@ -49,9 +46,9 @@ DNS1=8.8.8.8
 DNS2=1.1.1.1
 ```
 
-`cat /etc/sysconfig/network-scripts/ifcfg-eth1`
+`/etc/sysconfig/network-scripts/ifcfg-eth1`:
 
-``` bash
+```text
 TYPE=Ethernet
 PROXY_METHOD=none
 BROWSER_ONLY=no
@@ -72,12 +69,9 @@ NETMASK=255.255.255.0
 NM_CONTROLLED=yes
 ```
 
-To use a second interface and address we need to add another routing table. To do this go to file:  
-`vim /etc/iproute2/rt_tables`
+To use a second interface and address, add another routing table. In `/etc/iproute2/rt_tables`, add `1 rt2` at the end:
 
-and add at the end `1 rt2`:
-
-``` bash
+```text
 #
 # reserved values
 #
@@ -92,29 +86,36 @@ and add at the end `1 rt2`:
 1 rt2
 ```
 
-Now we need to add routing rules and routes:  
-`ip route add default via 10.10.0.1 dev eth1 table rt2`  
-`ip rule add from 10.10.0.0/24 table rt2`
+Add routing rules and routes:
 
-You can check these changes with commands:  
-`ip route show table rt2`  
-`ip rule show`
+```bash
+ip route add default via 10.10.0.1 dev eth1 table rt2
+ip rule add from 10.10.0.0/24 table rt2
+```
 
-If you would like to keep these changes after a system reboot it will be necessary to create systemd service. So, the first step is to create a script:  
-`vim /usr/local/bin/default_routes.sh`
+Verify the changes:
 
-``` bash
+```bash
+ip route show table rt2
+ip rule show
+```
+
+To persist these changes across reboots, create a systemd service. First, create the script `/usr/local/bin/default_routes.sh`:
+
+```bash
 # !/bin/bash
 ip route add default via 10.70.70.2 dev eth1 table int
 ```
 
-Don’t forget to change permissions to allow execute this file:  
-`chmod +x /usr/local/bin/default_routes.sh`
+Make it executable:
 
-Now, we can create a systemd service. Create a file and add the necessary parameters:  
-`vim /etc/systemd/system/default_route.service`
+```bash
+chmod +x /usr/local/bin/default_routes.sh
+```
 
-``` bash
+Create the systemd service file `/etc/systemd/system/default_route.service`:
+
+```text
 [Unit]
 Description=It adds default route for eth1
 Wants=network-online.target
@@ -129,4 +130,3 @@ TimeoutStartSec=0
 WantedBy=default.target
 ```
 
-That’s all. Thank you.

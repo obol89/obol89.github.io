@@ -8,58 +8,40 @@ tags:
 ---
 # How to move /var to new partition in CentOS 7
 
-If you need to move you /var to new partition in CentOS 7 you will need commands like below.
-
-Create new directory:  
-
-``` bash
+```bash
 mkdir /mnt/var_new
 ```
 
-Mount lvm:  
-
-``` bash
+```bash
 mount /dev/vg00/lvo10 /mnt/var_new
 ```
 
-Copy and sync content:  
-
-``` bash
+```bash
 rsync -avH /var/ /mnt/var_new
 ```
 
-Check content in two directories:  
-
-``` bash
+```bash
 diff -r /var /mnt/var_new
 ```
 
-Rename `/var`:  
-
-``` bash
+```bash
 mv /var /var_old
 ```
 
-Create new `/var`:  
-
-``` bash
+```bash
 mkdir /var
 ```
 
-Add fstab entry:  
+Add fstab entry:
 
-``` bash
+```text
 /dev/vg00/lvo10 /var xfs defaults 0 0
 ```
 
-Unmount `/mnt/var_new`:  
-
-``` bash
+```bash
 umount /mnt/var_new
 ```
 
-Mount `/var`:  
-
-``` bash
+```bash
 mount /var
 ```

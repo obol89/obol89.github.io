@@ -9,14 +9,14 @@ tags:
 ---
 # How to repair corrupted USB drive in Windows
 
-Restore a USB drive using Diskpart – Windows
+Restore a USB drive using Diskpart.
 
-Open a command Prompt as administrator (`cmd.exe`) and use the following commands.
+Open a Command Prompt as administrator (`cmd.exe`) and run:
 
-1. `Diskpart` then press `Enter`  
-2. `List Disk` then press `Enter`  
-3. `Select Disk X` (where X is the disk number of your USB drive) then press `Enter`  
-4. `Clean` then press `Enter`  
-5. `Create Partition Primary` then press `Enter`
-6. `Format fs=Fat32 Quick` then press `Enter` (You can also use `NTFS` or `exFAT`)
-7. `Active` then press `Enter`
+1. `Diskpart`
+2. `List Disk`
+3. `Select Disk X` (where X is the disk number of your USB drive)
+4. `Clean`
+5. `Create Partition Primary`
+6. `Format fs=Fat32 Quick` (you can also use `NTFS` or `exFAT`)
+7. `Active`

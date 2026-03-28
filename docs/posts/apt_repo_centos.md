@@ -9,17 +9,18 @@ tags:
 ---
 # Create an APT repository on CentOS
 
-Systems like Ubuntu, Debian or Mint are using apt packages. There is also the possibility to share apt packages from CentOS.  
-We are going to create an apt repository stored locally with gpg signed packages to avoid questions like "Do you trust the source?".
+Systems like Ubuntu, Debian or Mint use apt packages. You can also share apt packages from CentOS by creating an apt repository stored locally with GPG-signed packages.
 
 ## Preparing gpg keys  
 
-Keep in mind generating new keys can require some time for entropy generation.  
-**as root, no sudo!**  
-`gpg --gen-key`
+Generating new keys can require some time for entropy generation.
+**as root, no sudo!**
 
-For the first time you run `gpg --gen-key`, break it after it has generated some directories and files. By default they are located in `~/.gnupg/`
-Add the SHA256 requirement to the `gpg.conf`
+```bash
+gpg --gen-key
+```
+
+On the first run, break after it has generated directories and files in `~/.gnupg/`. Then add the SHA256 requirement to `gpg.conf`:
 
 ``` bash
 cat <<'EOF' >> ~/.gnupg/gpg.conf
@@ -28,30 +29,39 @@ digest-algo SHA256
 EOF
 ```
 
-Run gpg again and this time go through all the prompts to generate the key.  
-`gpg --gen-key`  
-This step might take a lot of time. If you need to speed this up you can open new terminal and run something like that:  
+Run gpg again and go through all the prompts to generate the key:
+
+```bash
+gpg --gen-key
+```
+
+This step might take a long time. To speed up entropy generation, run in another terminal:  
 
 ``` bash
 while true; do dd if=/dev/sda of=/dev/zero; find / | xargs file >/dev/null 2>&1; done
 ```
 
-Stop it with ctrl+c when gpg keys will finish to generate.
-After that you will need to export generated keys
+Stop it with ctrl+c when gpg key generation finishes. Then export the generated keys:
 
-`gpg --list-keys`
+```bash
+gpg --list-keys
+```
 
-`gpg --output your-PUBLIC-key-name-here.gpg --armor --export 123456AB`
+```bash
+gpg --output your-PUBLIC-key-name-here.gpg --armor --export 123456AB
+```
 
-`gpg --output your-PRIVATE-key-name-here.gpg --armor --export-secret-key 123456AB`
+```bash
+gpg --output your-PRIVATE-key-name-here.gpg --armor --export-secret-key 123456AB
+```
 
-Preferably is to put the public key available in the repository directory.
+Place the public key in the repository directory.
 
 ## Installing required packages
 
-Install epel-release that let you install dpkg-dev and tar packageds you need.
-
-`yum -y install epel-release dpkg-dev tar`
+```bash
+yum -y install epel-release dpkg-dev tar
+```
 
 ## Script to build the repository
 
@@ -91,13 +101,13 @@ chmod 755 ${updatescript}
 
 ## Adding packages to the repository
 
-Move any package to the repository directory and run the update script.
+Move any package to the repository directory and run the update script:
 
-`./update-repo.sh`
+```bash
+./update-repo.sh
+```
 
-Using repository as a client
-
-You need to import public key and add entry in your sources.list file.
+To use the repository as a client, import the public key and add an entry in `sources.list`:
 
 ``` bash
 sudo wget http://mirror.example.com/ubuntu/your-PUBLIC-key-name-here.gpg
@@ -111,6 +121,6 @@ sudo apt-key add /root/your-PUBLIC-key-name-here.gpg
 sudo wget http://mirror.example.com/ubuntu/example-ubuntu/example-ubuntu.list -O /etc/apt/sources.list.d/example-ubuntu.list
 ```
 
-Update available package list
-
-`apt-get update`
+```bash
+apt-get update
+```

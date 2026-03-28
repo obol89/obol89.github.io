@@ -10,49 +10,47 @@ tags:
 ---
 # How to extend LVM in Linux
 
-Firstly, you can check your Physical Volumes, Volume Groups and Logical Volumes with commands:
-
 ## Physical Volumes
 
-``` bash
+```bash
 pvs
 ```
 
-``` bash
+```text
 PV         VG             Fmt  Attr PSize   PFree
 /dev/sda2  centos_centos7 lvm2 a--  <19.00g    0
 ```
 
 ## Volume Groups
 
-``` bash
+```bash
 vgs
 ```
 
-``` bash
+```text
 VG             #PV #LV #SN Attr   VSize   VFree
 centos_centos7   1   2   0 wz--n- <19.00g    0
 ```
 
 ## Logical Volumes
 
-``` bash
+```bash
 lvs
 ```
 
-``` bash
+```text
 LV   VG             Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
 root centos_centos7 -wi-ao---- <17.00g
 swap centos_centos7 -wi-ao----   2.00g
 ```
 
-For adding a new Physical Volume we have to find the name of a new volume. We can use the following command to locate it:
+Locate the new volume to add as a Physical Volume:
 
-``` bash
+```bash
 fdisk -l
 ```
 
-``` bash
+```text
 Disk /dev/sda: 21.5 GB, 21474836480 bytes, 41943040 sectors
 Units = sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
@@ -82,9 +80,9 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 ```
 
-Now, it’s time to configure our new disk.
+Partition the new disk:
 
-``` bash
+```bash
 fdisk /dev/sdb
 ```
 
@@ -95,7 +93,7 @@ Type `8e` to change the partition type to Linux LVM
 Use `p` to print the create partition  
 Press `w` to write the changes  
 
-``` bash
+```text
 Welcome to fdisk (util-linux 2.23.2).
 
 Changes will remain in memory only, until you decide to write them.
@@ -128,65 +126,65 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 
-Next, create new Physical Volume
+Create the new Physical Volume:
 
-``` bash
+```bash
 pvcreate /dev/sdb1
 ```
 
-``` bash
+```text
 Physical volume /dev/sdb1 successfully created.
 ```
 
-Verify the physical volume using the below command:
+Verify:
 
-``` bash
+```bash
 pvs
 ```
 
-``` bash
+```text
 PV         VG             Fmt  Attr PSize   PFree
 /dev/sda2  centos_centos7 lvm2 a--  <19.00g      0
 /dev/sdb1                 lvm2 ---  <10.00g <10.00g
 ```
 
-Add this `pv` to `centos` volume group to extend the size of a volume group to get more space:
+Add the PV to the volume group:
 
-``` bash
+```bash
 vgextend centos_centos7 /dev/sdb1
 ```
 
-``` bash
+```text
 Volume group "centos_centos7" successfully extended
 ```
 
-``` bash
+```bash
 vgs
 ```
 
-``` bash
+```text
 VG             #PV #LV #SN Attr   VSize  VFree
 centos_centos7   2   2   0 wz--n- 28.99g <10.00g
 ```
 
-It’s time to extend logical volume. If you would like to extend your logical volume with all free available space type the following command:
+Extend the logical volume with all free space:
 
-``` bash
+```bash
 lvextend -l +100%FREE /dev/centos_centos7/root
 ```
 
-``` bash
+```text
 Size of logical volume centos_centos7/root changed from <17.00 GiB (4351 extents) to 26.99 GiB (6910 extents).
 Logical volume centos_centos7/root successfully resized.
 ```
 
-Last thing to do. Re-sizing the file system we use:
+Resize the filesystem:
 
-``` bash
+```bash
 xfs_growfs /dev/centos_centos7/root
 ```
 
-``` bash
+```text
 meta-data=/dev/mapper/centos_centos7-root isize=512    agcount=4, agsize=1113856 blks
          =                       sectsz=512   attr=2, projid32bit=1
          =                       crc=1        finobt=0 spinodes=0
@@ -199,35 +197,33 @@ realtime =none                   extsz=4096   blocks=0, rtextents=0
 data blocks changed from 4455424 to 7075840
 ```
 
-You are good. That’s all that you need to extend logical volume on CentOS. If you want to confirm that, just check it with the following commands:
+Confirm the result:
 
-``` bash
+```bash
 pvs
 ```
 
-``` bash
+```text
 PV         VG             Fmt  Attr PSize   PFree
 /dev/sda2  centos_centos7 lvm2 a--  <19.00g    0
 /dev/sdb1  centos_centos7 lvm2 a--  <10.00g    0
 ```
 
-``` bash
+```bash
 lvs
 ```
 
-``` bash
+```text
 LV   VG             Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
 root centos_centos7 -wi-ao---- 26.99g
 swap centos_centos7 -wi-ao----  2.00g
 ```
 
-``` bash
+```bash
 vgs
 ```
 
-``` bash
+```text
 VG             #PV #LV #SN Attr   VSize  VFree
 centos_centos7   2   2   0 wz--n- 28.99g    0
 ```
-
-Thanks!

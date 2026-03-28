@@ -11,8 +11,8 @@ tags:
 ---
 # Update Snap package and snap-store
 
-The command has been tested on Ubuntu 22.04  
+Tested on Ubuntu 22.04. Kills the current snap-store process and upgrades all snap packages.
 
-`sudo killall snap-store && snap refresh`
-
-Running this command will kill current snap-store process and it will upgrade all upgradable snap packages.
+```bash
+sudo killall snap-store && snap refresh
+```

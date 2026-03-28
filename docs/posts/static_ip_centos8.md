@@ -8,15 +8,15 @@ tags:
 ---
 # Configuration of a static IP address on CentOS 8
 
-There are a few ways to configure static IP on CentOS systems but I’ll show you how to do it just through editing config files
+This covers configuring a static IP by editing config files directly.
 
-We need to identify our interface that we would like to edit. We can do this using the following command:
+Identify the interface to configure:
 
-``` bash
+```bash
 ip a
 ```
 
-``` bash
+```text
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
@@ -41,15 +41,13 @@ ip a
     link/ether 52:54:00:13:f3:a7 brd ff:ff:ff:ff:ff:ff
 ```
 
-Next we need to edit or create config file for this interface in this location:
+Edit or create the config file for this interface:
 
-``` bash
+```bash
 vim /etc/sysconfig/network-scripts/ifcfg-ens10
 ```
 
-and add following arguments:
-
-``` bash
+```text
 TYPE=Ethernet
 PROXY_METHOD=none
 BROWSER_ONLY=no
@@ -70,8 +68,6 @@ PREFIX=24
 GATEWAY=192.168.178.1
 ```
 
-Parameters like `IPADDR`, `PREFIX`, `GATEWAY`, `DNS1`, `DNS2` etc. are almost necessary.  
+Parameters like `IPADDR`, `PREFIX`, `GATEWAY`, `DNS1`, `DNS2` are essential.
 
-We need to remember to change `BOOTPROTO` to `none` or `static`.  
-
-Thanks!
+Set `BOOTPROTO` to `none` or `static`.

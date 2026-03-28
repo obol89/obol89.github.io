@@ -8,27 +8,38 @@ tags:
 ---
 # Delete git branch
 
-The basic command syntax for deleting branch is:  
-`git branch (-d | -D) [-r] <branchname>...`
+Syntax:
 
-Note that each local branch has a corresponding upstream branch from the remote: origin
+```text
+git branch (-d | -D) [-r] <branchname>...
+```
 
-The simplest form of the command deletes a local branch:  
-`git branch -d dev`
+Delete a local branch:
 
-If you delete a branch that only exists locally, with unmerged changes, you’ll lose those changes. Therefore, git will refuse to delete a branch in such a situation, by default:
+```bash
+git branch -d dev
+```
 
+If the branch has unmerged changes, git will refuse:
+
+```text
 error: The branch `dev` is not fully merged.
 If you are sure you want to delete it, run `git branch -D dev`.
+```
 
-So, you need to use:  
-`git branch -D dev`
+Force-delete a local branch with unmerged changes:
 
-To remove remote branch you need to use git push command along with the `-d` flag.  
+```bash
+git branch -D dev
+```
 
-``` bash
-$ git push -d origin dev
+Delete a remote branch:
 
+```bash
+git push -d origin dev
+```
+
+```text
 To github.com:obol89/test.git
 - [deleted] dev
 ```

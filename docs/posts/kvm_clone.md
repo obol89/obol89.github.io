@@ -10,32 +10,32 @@ tags:
 
 ## Clone your VM and spawn new instances in KVM
 
-List all VMs to see which one you would like to clone:
+List all VMs:
 
-```shell
+```bash
 virsh list --all
 ```
 
-If the chosen one is running, shut it down:
+If the target VM is running, suspend it:
 
-```shell
+```bash
 virsh suspend debian12-base
 ```
 
 Clone the VM:
 
-```shell
+```bash
 virt-clone --original debian12-base --name debian12-base-clone01 --auto-clone
 ```
 
 Resume the suspended base:
 
-```shell
+```bash
 virsh resume debian12-base
 ```
 
 ## Prepare new system to be fresh and working
 
-```shell
+```bash
 virt-sysprep -d debian12-base-clone01  --root-password password:abcABC123 --firstboot-command 'dpkg-reconfigure openssh-server'
 ```

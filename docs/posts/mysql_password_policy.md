@@ -9,22 +9,18 @@ tags:
 ---
 # How to change MySQL Password Policy Level
 
-The latest MySQL servers come with a validate password plugin. This plugin configures a password policy to make server MySQL more secure.
-
-While changing the password, I got the error:  
+MySQL servers ship with a validate password plugin that enforces a password policy. This can cause the error:
 `ERROR 1819 (HY000): Your password does not satisfy the current policy requirements.`
 
-Follow the below tutorial to change password policy level for MySQL.
+The policy level can be changed at runtime via the MySQL CLI or permanently in the config file (`my.cnf` or `mysqld.cnf`).
 
-To change the default password policy level, we can change the settings at runtime using the command line or in the config file (`my.cnf` or `mysqld.cnf`) permanently.
+View current `validate_password` settings:
 
-Login to MySQL command prompt and execute the below query to view current settings of `validate_password`.
-
-``` bash
-mysql> SHOW VARIABLES LIKE 'validate_password%';
+```bash
+mysql> SHOW VARIABLES LIKE ‘validate_password%’;
 ```
 
-``` bash
+```text
 +--------------------------------------+--------+
 | Variable_name                        | Value  |
 +--------------------------------------+--------+
@@ -39,19 +35,19 @@ mysql> SHOW VARIABLES LIKE 'validate_password%';
 7 rows in set (0.06 sec)
 ```
 
-The default level is `MEDIUM`, we can change it to `LOW` by using the below query. The `LOW` level required only the password’s length to min 8 characters.
+The default level is `MEDIUM`. Change it to `LOW` (requires only minimum 8-character length):
 
-``` bash
+```bash
 mysql> SET GLOBAL validate_password.policy=LOW;
 ```
 
-``` bash
+```text
 Query OK, 0 rows affected (0.02 sec)
 ```
 
-To make this setting permanent edit MySQL configuration (`my.cnf`) file and add below settings.
+To make this permanent, add to the MySQL configuration (`my.cnf`):
 
-``` bash
+```text
 [mysqld]
 validate_password.policy=LOW
 ```

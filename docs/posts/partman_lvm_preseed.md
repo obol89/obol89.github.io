@@ -10,9 +10,9 @@ tags:
 ---
 # Create partman LVM partitions on Debian with preseed
 
-Example, how to write a template for Debian to create LVM partitions with partman. It is a bit tricky, as first we have to create boot partition, then virtual group, and further we are able to create partitions by assigning them to volume group.
+Preseed template for Debian LVM partitions with partman. The boot partition must be created first, then the volume group, then individual logical volumes assigned to that group.
 
-``` bash
+```text
 d-i partman-auto/expert_recipe string                 \
       root ::                                         \
             300 512 2048 ext4                         \

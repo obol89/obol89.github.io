@@ -14,10 +14,11 @@ Removing or creating a partition doesn't remove a data or a filesystem on a disk
 
 ## Find partition to extend
 
-Run `lsblk` command to see which mountpoint is assigned to which partition
-
 ```bash
-root@debian1101:~# lsblk
+lsblk
+```
+
+```text
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda      8:0    0   20G  0 disk
 ├─sda1   8:1    0  4.1G  0 part /
@@ -37,11 +38,11 @@ Wherever you have your virtual machine installed, you need to shut it down and i
 
 ## Use `fdisk` to delete and re-add partition
 
-Run `fidsk /dev/sda` to start the fdisk menu for this specific partition:
-
 ```bash
-root@debian1101:~# fdisk /dev/sda
+fdisk /dev/sda
+```
 
+```text
 Welcome to fdisk (util-linux 2.36.1).
 Changes will remain in memory only, until you decide to write them.
 Be careful before using the write command.
@@ -49,9 +50,7 @@ Be careful before using the write command.
 
 ### Print the partition table
 
-With `p` command you can print partition table:
-
-```bash
+```text
 Command (m for help): p
 Disk /dev/sda: 20 GiB, 21474836480 bytes, 41943040 sectors
 Disk model: VBOX HARDDISK
@@ -72,7 +71,7 @@ Device     Boot    Start      End  Sectors  Size Id Type
 
 ### Delete the partition we want to extend with `d` command
 
-```bash
+```text
 Command (m for help): d
 Partition number (1,2,5-8, default 8): 5
 
@@ -81,9 +80,9 @@ Partition 5 has been deleted.
 
 ### Create a new partition with `n` command
 
-In this stage you need to be careful which blocks are youg going to use. This part might be tricky.
+Be careful with which blocks you select here.
 
-```bash
+```text
 Command (m for help): n
 All space for primary partitions is in use.
 Adding logical partition 8
@@ -95,7 +94,7 @@ Created a new partition 8 of type 'Linux' and of size 1.7 GiB.
 
 ### Save new partition table with `w` command
 
-```bash
+```text
 Command (m for help): w
 The partition table has been altered.
 
@@ -106,8 +105,9 @@ Syncing disks.
 ## Resize filesystem for new partition
 
 ```bash
-root@debian1101:~# resize2fs /dev/sda8
-resize2fs 1.46.2 (28-Feb-2021)
+resize2fs /dev/sda8
 ```
 
-That's it. Your partition will be bigger now.
+```text
+resize2fs 1.46.2 (28-Feb-2021)
+```
