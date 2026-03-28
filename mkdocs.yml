@@ -45,6 +45,7 @@ theme:
   features:
     - navigation.sections
     - navigation.top
+    - content.code.copy
   #   - navigation.tabs
   palette:
     - scheme: default
