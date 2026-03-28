@@ -3,36 +3,42 @@ nav:
   - Home: index.md
   - Tags: tags.md
   - 'Notes':
-    - Authentication plugin caching_sha2_password cannot be loaded: posts/mysql8_caching_sha2_pass.md
-    - Bringing custom logs to Elasticsearch: posts/custom_logs_elastic.md
-    - Change MySQL Password Policy Level: posts/mysql_password_policy.md
-    - Check size of the MySQL table: posts/mysql_table_size.md
-    - Copy files with SCP: posts/scp_transfer.md
-    - Create APT repository on CentOS: posts/apt_repo_centos.md
-    - Create empty file to take disk space on Linux: posts/dummy_file.md
-    - Create preseed with LVM and partman: posts/partman_lvm_preseed.md
-    - Configure static IP address on CentOS 8: posts/static_ip_centos8.md
-    - Copy MySQL database: posts/copy_mysql_database.md
-    - Delete branch in git: posts/delete_git_branch.md
-    - Delete files older than X days: posts/find_delete_files.md
-    - Extend LVM in Linux: posts/extend_lvm_linux.md
-    - Extend partition without LVM in Linux: posts/extending_disk_space_without_lvm.md
-    - Gather or update ansible facts: posts/gather_ansible_facts.md
-    - Host is not allowed to connect to this MySQL server: posts/host_not_allowed_connect_mysql.md
-    - Increase Swap space: posts/increase_swap_space.md
-    - Install Percona MySQL Server 8 on CentOS 8: posts/install_percona_mysql8.md
-    - KVM clone virtual machines with virt-clone and virt-sysprep: posts/kvm_clone.md 
-    - List and add Iptables rules: posts/iptables_basics.md
-    - Move /var to new partition in CentOS: posts/var_to_new_partition.md
-    - Refresh snap packages / update snap: posts/snap_refresh.md
-    - Repair corrupted USB drive in Linux: posts/repair_corrupted_usb_drive.md
-    - Repair corrupted USB drive in Windows: posts/repair_corrupted_usb_drive_win.md
-    - Restart port on Cisco device: posts/cisco_port_restart.md
-    - Required SSH files permissions: posts/ssh_permissions.md
-    - Screen commands: posts/screen_use.md
-    - Speed test between two hosts: posts/speed_test_between_hosts.md
-    - Update firmware on Linux: posts/linux_firmware_update.md
-    - Use two network gateways with CentOS: posts/two_gateways_centos.md
+    - 'Database (MySQL)':
+      - Authentication plugin caching_sha2_password cannot be loaded: posts/mysql8_caching_sha2_pass.md
+      - Bringing custom logs to Elasticsearch: posts/custom_logs_elastic.md
+      - Change MySQL Password Policy Level: posts/mysql_password_policy.md
+      - Check size of the MySQL table: posts/mysql_table_size.md
+      - Copy MySQL database: posts/copy_mysql_database.md
+      - Host is not allowed to connect to this MySQL server: posts/host_not_allowed_connect_mysql.md
+      - Install Percona MySQL Server 8 on CentOS 8: posts/install_percona_mysql8.md
+    - 'Storage & Filesystem':
+      - Create empty file to take disk space on Linux: posts/dummy_file.md
+      - Extend LVM in Linux: posts/extend_lvm_linux.md
+      - Extend partition without LVM in Linux: posts/extending_disk_space_without_lvm.md
+      - Increase Swap space: posts/increase_swap_space.md
+      - Move /var to new partition in CentOS: posts/var_to_new_partition.md
+      - Create preseed with LVM and partman: posts/partman_lvm_preseed.md
+    - 'Networking':
+      - Configure static IP address on CentOS 8: posts/static_ip_centos8.md
+      - Copy files with SCP: posts/scp_transfer.md
+      - List and add Iptables rules: posts/iptables_basics.md
+      - Restart port on Cisco device: posts/cisco_port_restart.md
+      - Speed test between two hosts: posts/speed_test_between_hosts.md
+      - Use two network gateways with CentOS: posts/two_gateways_centos.md
+    - 'Linux Tools & Admin':
+      - Delete files older than X days: posts/find_delete_files.md
+      - Screen commands: posts/screen_use.md
+      - Refresh snap packages / update snap: posts/snap_refresh.md
+      - Update firmware on Linux: posts/linux_firmware_update.md
+      - Repair corrupted USB drive in Linux: posts/repair_corrupted_usb_drive.md
+      - Repair corrupted USB drive in Windows: posts/repair_corrupted_usb_drive_win.md
+      - Required SSH files permissions: posts/ssh_permissions.md
+    - 'Virtualization & Automation':
+      - Create APT repository on CentOS: posts/apt_repo_centos.md
+      - Gather or update ansible facts: posts/gather_ansible_facts.md
+      - KVM clone virtual machines with virt-clone and virt-sysprep: posts/kvm_clone.md
+    - 'Git':
+      - Delete branch in git: posts/delete_git_branch.md
 theme:
   name: material
   custom_dir: overrides
